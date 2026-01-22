@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Comic Neue', sans-serif;
+  /* VESALIJE pasteli - dječiji rainbow bez tamnih tonova */
+  background: linear-gradient(135deg, #fff0f5 0%, #f0f8ff 20%, #fefce8 40%, #f0fdf4 60%, #fef2f2 80%, #f8fafc 100%);
+  color: #374151;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '🎈🎂✨🧸🎪🎉';
+  position: fixed; top: 10%; left: -20%; font-size: 2.8rem;
+  animation: floatPlayful 16s ease-in-out infinite;
+  opacity: 0.18; z-index: -1;
+  filter: drop-shadow(0 4px 12px rgba(255,182,193,0.4));
+  color: #ff6b9d !important;
+}
+
+@keyframes floatPlayful {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(40px, -30px) rotate(10deg) scale(1.1); }
+  50% { transform: translate(-20px, 20px) rotate(-5deg) scale(0.95); }
+  75% { transform: translate(20px, -10px) rotate(5deg) scale(1.05); }
+}
+
+/* FIX: Tab content VIDLJIV */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block !important;
+  animation: fadeSlideIn 0.5s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+.top-tabs-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(25px);
+  padding: 1.2rem 0; border-bottom: 2px solid #e3f2fd;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+
+.top-tabs-nav .container {
+  display: flex; justify-content: center; gap: 2rem;
+}
+
+.tab-btn {
+  font-family: 'Fredoka One', cursive; font-size: 1.4rem;
+  padding: 0.9rem 2.2rem; background: rgba(255,255,255,0.9);
+  color: #5a67d8; border: 2px solid rgba(102,126,234,0.3);
+  border-radius: 32px; cursor: pointer; transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  box-shadow: 0 6px 20px rgba(102,126,234,0.15); min-width: 150px;
+  position: relative; overflow: hidden;
+}
+
+.tab-btn::before {
+  content: '✨'; position: absolute; top: -50%; right: -50%; font-size: 1.5rem;
+  opacity: 0; transition: all 0.4s ease;
+}
+
+.tab-btn:hover { 
+  transform: translateY(-6px) scale(1.02); 
+  border-color: #667eea; 
+  box-shadow: 0 15px 40px rgba(102,126,234,0.25);
+  background: rgba(255,255,255,1);
+}
+
+.tab-btn:hover::before { opacity: 0.6; top: 20%; right: 20%; }
+
+.tab-btn.active {
+  background: linear-gradient(135deg, rgba(243,244,246,0.9), rgba(248,250,252,0.9));
+  color: #4a5568; border-color: #90a4ae; 
+  box-shadow: 0 12px 35px rgba(102,126,234,0.2);
+}
+
+.top-header {
+  background: rgba(255,255,255,0.6); padding: 2rem 0; /* Smanjeno padding */
+  text-align: center; border-bottom: 1px solid rgba(232,234,246,0.8);
+  backdrop-filter: blur(15px);
+}
+
+.main-title {
+  font-family: 'Fredoka One', cursive; font-size: clamp(2.8rem, 8vw, 4.5rem); /* Manje na mobitelu */
+  background: linear-gradient(135deg, #667eea, #764ba2, #f6ad55); 
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 0.6rem; animation: gentleWobble 3s ease-in-out infinite;
+  text-shadow: 0 2px 10px rgba(102,126,234,0.2);
+}
+
+.main-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem); /* Manje subtitle */
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-weight: 600; max-width: 600px; margin: 0 auto;
+}
+
+.tabs-container { 
+  padding: 2rem 0 3rem 0; /* Smanjeno za gore podizanje */
+  min-height: 50vh; 
+}
+
+h2 {
+  font-family: 'Fredoka One', cursive; font-size: clamp(2rem, 5.5vw, 3.2rem); /* Manje h2 */
+  background: linear-gradient(135deg, #4a5568, #667eea); 
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  text-align: center; margin-bottom: 2rem; /* Manji margin */
+  position: relative;
+}
+
+h2::after {
+  content: '✨'; display: block; width: 60px; height: 3px;
+  background: linear-gradient(90deg, #f6ad55, #48bb78); margin: 0.8rem auto 0;
+  border-radius: 2px; animation: sparkleLine 2s ease-in-out infinite;
+}
+
+.grid, .contact-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+  gap: 1.8rem; /* Manji gap */
+  margin-top: -1rem; /* Podigne kartice još više */
+}
+
+.card, .contact-card {
+  background: rgba(255,255,255,0.90); backdrop-filter: blur(20px);
+  padding: 2.2rem 1.8rem; /* Manji padding */
+  border-radius: 28px; 
+  border: 1px solid rgba(224,231,255,0.8);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.10); 
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  position: relative; overflow: hidden;
+}
+
+.card::before, .contact-card::before {
+  content: '🎉'; position: absolute; top: 1rem; right: 1.5rem;
+  font-size: 2rem; opacity: 0.1;
+}
+
+.card:hover, .contact-card:hover {
+  transform: translateY(-12px) rotate(1deg); 
+  box-shadow: 0 30px 80px rgba(102,126,234,0.20);
+  border-color: rgba(102,126,234,0.4);
+}
+
+.card h3, .contact-card h3 {
+  font-family: 'Fredoka One', cursive; font-size: 1.8rem; /* Manji h3 */
+  background: linear-gradient(135deg, #4a5568, #667eea);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.card p, .contact-card p { 
+  color: #718096; margin-bottom: 1.5rem; font-size: 1.1rem; /* Manji text */
+}
+
+.price { 
+  font-size: 2rem; /* Manji price */
+  font-weight: 700; 
+  background: linear-gradient(135deg, #38a169, #48bb78);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-family: 'Fredoka One', cursive; 
+}
+
+.btn, .btn-secondary {
+  font-family: 'Comic Neue', sans-serif; font-weight: 600; 
+  padding: 0.9rem 2rem; /* Manji btn */
+  text-decoration: none; border-radius: 30px;
+  font-size: 1rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: all 0.3s ease; display: inline-block;
+}
+
+.btn { 
+  background: linear-gradient(135deg, #48bb78, #38a169); 
+  color: white; position: relative; overflow: hidden;
+}
+
+.btn:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 15px 40px rgba(72,187,120,0.4); 
+}
+
+.btn-secondary { 
+  background: linear-gradient(135deg, #ed8936, #f6ad55); 
+  color: white; 
+}
+
+.btn-secondary:hover { 
+  box-shadow: 0 15px 40px rgba(237,137,54,0.4); 
+  transform: translateY(-4px);
+}
+
+/* SPECIAL DISCOUNT STYLES */
+.special-discount {
+  border: 2px solid rgba(255,182,193,0.6) !important;
+  background: linear-gradient(135deg, rgba(255,182,193,0.15), rgba(255,255,255,0.9)) !important;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 15px 50px rgba(255,182,193,0.3); }
+  50% { box-shadow: 0 15px 50px rgba(255,182,193,0.6); }
+}
+
+.special-discount h3 { 
+  background: linear-gradient(135deg, #ff69b4, #ff1493) !important;
+  -webkit-background-clip: text !important; 
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* FIX: Emojiji OBojeni, ne ljubičasti! 🎈 */
+body::before,
+.tab-btn::before,
+h2::after,
+.card::before,
+.contact-card::before,
+.main-title,
+.main-subtitle,
+h2,
+h3,
+.price {
+  -webkit-text-fill-color: unset !important;
+  -webkit-background-clip: initial !important;
+  color: inherit !important;
+  text-shadow: none !important;
+  background: none !important;
+}
+
+body::before {
+  color: #ff9a9e !important; /* Ružičasti baloni */
+  opacity: 0.15 !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.tab-btn::before {
+  color: #f6ad55 !important; /* Zlatna zvjezdica */
+}
+
+h2::after {
+  content: '' !important; /* Ukloni ✨ ako smeta, zadrži liniju */
+  color: transparent !important;
+}
+
+.card::before,
+.contact-card::before {
+  color: #f6ad55 !important; /* Zlatni 🎉 */
+  opacity: 0.2 !important;
+}
+
+.special-discount::before {
+  content: '💝' !important;
+  color: #ff69b4 !important;
+  opacity: 0.3 !important;
+}
+
+/* Osiguraj da emojiji uvijek rade */
+* { 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* SLIKE U USLUGE SEKCIJI - SAVRŠENO L IJEP O! 📸 */
+.services-hero {
+  width: 100%; 
+  margin: 0 0 2.5rem 0; 
+  border-radius: 32px;
+  overflow: hidden; 
+  box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+  background: rgba(255,255,255,0.9); 
+  backdrop-filter: blur(20px);
+  transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.hero-service-img {
+  width: 100%; 
+  height: 380px; 
+  object-fit: cover; 
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.services-hero:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 35px 90px rgba(59,130,246,0.3);
+}
+
+.services-hero:hover .hero-service-img {
+  transform: scale(1.08);
+}
+
+/* KARTICE SA SLIKAMA */
+.image-card {
+  padding: 1rem 1.8rem 2rem !important; /* Više prostora za sliku */
+}
+
+.card-img {
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 24px; 
+  margin-bottom: 1.2rem;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+  transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  border: 3px solid rgba(255,255,255,0.8);
+}
+
+.image-card:hover .card-img {
+  transform: scale(1.08); 
+  box-shadow: 0 20px 50px rgba(59,130,246,0.25);
+  border-color: rgba(59,130,246,0.4);
+}
+
+.image-card h3 {
+  margin-top: 0 !important; 
+  font-size: 1.9rem;
+}
+
+.card p {
+  margin-bottom: 1.5rem;
+}
+
+/* POZADINA2 DETALJI - MANJE PROZIRNI + PRIRODN IJI + BLIZE NASLOVU! 🎈 */
+.service-detail {
+  position: fixed !important;
+  top: 120px; /* BLIZE NASLOVU - ispod main-title */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.service-detail.left {
+  left: 420px;
+  animation: naturalFloatLeft 16s ease-in-out infinite;
+}
+
+.service-detail.right {
+  right: 420px;
+  transform: scale(0.9);
+  animation: naturalFloatRight 20s ease-in-out infinite reverse;
+}
+
+.detail-img {
+  width: 130px !important;
+  height: 130px !important;
+  filter: 
+    drop-shadow(0 4px 16px rgba(0,0,0,0.3)) /* Jača sjena */
+    brightness(1.05) /* Malo svjetlije */
+    saturate(1.15); /* Bogatije boje - PRIRODNI izgled */
+  border-radius: 20%; /* Lagano zaobljeno */
+}
+
+.service-detail.right .detail-img {
+  width: 130px !important;
+  height: 130px !important;
+}
+
+@keyframes naturalFloatLeft {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  30% { 
+    transform: translateY(-6px) rotate(1.5deg); 
+  }
+  60% { 
+    transform: translateY(-2px) rotate(-0.5deg); 
+  }
+}
+
+@keyframes naturalFloatRight {
+  0%, 100% { 
+    transform: scale(0.9) translateY(0px) rotate(0deg); 
+  }
+  30% { 
+    transform: scale(0.9) translateY(-5px) rotate(-1deg); 
+  }
+  60% { 
+    transform: scale(0.9) translateY(-1px) rotate(0.8deg); 
+  }
+}
+
+/* MOBITEL - Još bolje vidljivo */
+@media (max-width: 768px) {
+  .service-detail {
+    top: 100px; /* Čak bliže naslovu na mobitelu */
+  }
+  .service-detail.left { left: 12px; }
+  .service-detail.right { right: 12px; }
+  .detail-img {
+    width: 95px !important;
+    height: 95px !important;
+  }
+  .service-detail.right .detail-img {
+    width: 85px !important;
+    height: 85px !important;
+  }
+}
+
+
+/* RESPONSIVE SLIKE */
+@media (max-width: 768px) {
+  .hero-service-img { height: 280px; }
+  .card-img { height: 160px; }
+  .services-hero { margin-bottom: 2rem; border-radius: 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero-service-img { height: 240px; }
+  .card-img { height: 140px; }
+  .image-card { padding: 0.8rem 1.2rem 1.5rem !important; }
+}
+
+/* FIX ako slike ne učitavaju */
+.card-img, .hero-service-img {
+  background: linear-gradient(135deg, #f0f9ff, #fef3c7);
+  display: flex; align-items: center; justify-content: center;
+  color: #94a3b8; font-size: 1.2rem;
+}
+
+.card-img[src=""], .hero-service-img[src=""] {
+  content: "Slika se učitava... 📸";
+}
+
+
+.tab-btn:hover::before,
+.card:hover::before,
+.contact-card:hover::before {
+  animation: sparkleEmoji 0.6s ease-out;
+}
+
+@keyframes sparkleEmoji {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+  50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+}
+
+
+@media (max-width: 768px) {
+  .top-tabs-nav .container { gap: 1rem; padding: 0 1.5rem; }
+  .tab-btn { 
+    padding: 1rem 1.5rem; font-size: 1.2rem; flex: 1; min-width: auto; 
+  }
+  .grid, .contact-grid { 
+    grid-template-columns: 1fr; gap: 1.5rem; 
+    margin-top: -0.5rem;
+  }
+  .tabs-container { padding: 1.5rem 0 2.5rem 0; }
+  body::before { font-size: 1.5rem; top: 10%; }
+  .top-header { padding: 1.5rem 0; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+  .main-title { animation-duration: 2.5s !important; font-size: 2.8rem !important; }
+  .grid, .contact-grid { gap: 1.2rem; }
+}
