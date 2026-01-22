@@ -428,3 +428,46 @@ h2::after {
   .card h3 { font-size: 1rem !important; }
   .card p { font-size: 0.8rem !important; }
 }
+
+/* KONTAKT TAKOĐER KOMPAKTAN NA MOBITELU! 📱 */
+@media (max-width: 768px) {
+  /* Kontakt grid - 3 kolone mali! */
+  .contact-grid { 
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 0.6rem !important; 
+    margin-top: 0 !important;
+  }
+  
+  .contact-card { 
+    padding: 0.8rem 0.6rem !important; 
+    min-height: 140px; /* Isto visine kao usluge kartice */
+  }
+  
+  .contact-card h3 { 
+    font-size: 1.1rem !important; 
+    margin-bottom: 0.3rem !important; 
+  }
+  
+  .contact-card p { 
+    font-size: 0.85rem !important; 
+    margin-bottom: 0.5rem !important; 
+    line-height: 1.3 !important;
+  }
+  
+  .btn-secondary { 
+    padding: 0.5rem 1rem !important; 
+    font-size: 0.85rem !important; 
+  }
+  
+  /* Special discount - isti stil */
+  .special-discount { 
+    padding: 0.8rem 0.6rem !important; 
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-grid { gap: 0.4rem !important; }
+  .contact-card { padding: 0.6rem 0.5rem !important; min-height: 120px; }
+  .contact-card h3 { font-size: 1rem !important; }
+  .contact-card p { font-size: 0.8rem !important; }
+}
