@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@400;700&family=Roboto:wght@400;700&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -31,6 +30,11 @@ body::before {
 /* FIX: Tab content VIDLJIV */
 .tab-content {
   display: none;
+}
+
+.main-title, h2, .card h3, .contact-card h3, .tab-btn {
+  font-family: 'Fredoka One', 'Comic Neue', cursive !important;
+  font-weight: 400 !important; /* Isto za sva slova */
 }
 
 .tab-content.active {
@@ -91,14 +95,29 @@ body::before {
   backdrop-filter: blur(15px);
 }
 
+css
 .main-title {
-  font-family: 'Fredoka One', cursive; font-size: clamp(2.8rem, 8vw, 4.5rem); /* Manje na mobitelu */
+  font-family: 'Comic Neue', 'Fredoka One', cursive !important; 
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
   background: linear-gradient(135deg, #667eea, #764ba2, #f6ad55); 
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  margin-bottom: 0.6rem; animation: gentleWobble 3s ease-in-out infinite;
+  margin-bottom: 0.6rem; 
+  animation: gentleWobble 3s ease-in-out infinite;
   text-shadow: 0 2px 10px rgba(102,126,234,0.2);
 }
 
+/* SPECIFIČNO ZA MOBITEL - još manje */
+@media (max-width: 768px) {
+  .main-title { 
+    font-size: clamp(1.9rem, 5.5vw, 2.8rem) !important; 
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title { 
+    font-size: clamp(1.7rem, 5vw, 2.4rem) !important; 
+  }
+}
 .main-subtitle {
   font-size: clamp(1.1rem, 3vw, 1.5rem); /* Manje subtitle */
   background: linear-gradient(135deg, #48bb78, #38a169);
